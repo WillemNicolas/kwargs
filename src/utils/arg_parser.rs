@@ -73,7 +73,7 @@ impl<ArgType:std::fmt::Debug,ErrType:std::fmt::Debug> Parser<ArgType,ErrType> {
         self.args.push((long_name.to_string(),names,description.to_string(),None,Some(Value::Flag(default))));
         self
     }
-    pub fn parse(self) -> Result<HashMap<Id,Value<ArgType>>,ArgumentError<ErrType>> {
+    pub fn parse(&self) -> Result<HashMap<Id,Value<ArgType>>,ArgumentError<ErrType>> {
         let mut args = std::env::args();
         let program_name = args.next().unwrap_or("".to_string());
 
